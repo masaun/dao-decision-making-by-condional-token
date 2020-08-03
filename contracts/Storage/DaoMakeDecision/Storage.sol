@@ -4,4 +4,6 @@ import "./Objects.sol";
 
 contract Storage is Objects {
 
+    mapping(address => string) public memberNames;
+
 }
