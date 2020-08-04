@@ -5,9 +5,12 @@
   "dependencies": {
     "@gnosis.pm/conditional-tokens-contracts": "^1.0.1",
     "@gnosis.pm/conditional-tokens-market-makers": "^1.6.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "dotenv": "^8.2.0"
   },
   "scripts": {
+    "test:dev": "truffle test ./test/* --network development",
     "migrate:dev": "truffle migrate --network development",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
