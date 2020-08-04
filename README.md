@@ -1,3 +1,20 @@
+## my-condional-token-contract
+### Execution Process
+
+- 1.Start ganache-cli
+```
+ganache-cli -d
+```
+
+- 2.Migrate
+```
+npm run migrate:dev
+```
+
+<br>
+
+<hr>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

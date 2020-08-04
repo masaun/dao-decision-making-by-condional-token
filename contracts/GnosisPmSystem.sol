@@ -1,4 +1,4 @@
-pragma solidity ^0.5.1;
+pragma solidity ^0.5.16;
 
 // NOTE: This file porpouse is just to make sure truffle compiles all of depending
 //  contracts when we are in development.

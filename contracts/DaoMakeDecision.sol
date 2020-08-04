@@ -1,8 +1,31 @@
-pragma solidity ^0.5.1;
+pragma solidity ^0.5.16;
 
-import './GnosisPmSystem.sol';
+/// Specific storage for the DaoMakeDecision contract
+import "./Storage/DaoMakeDecision/Storage.sol";
+import "./Storage/DaoMakeDecision/Events.sol";
+
+/// Read contract from node_module 
+//import './GnosisPmSystem.sol';
+import "../node_modules/@gnosis.pm/conditional-tokens-contracts/contracts/ConditionalTokens.sol";
 
 
-contract DaoMakeDecision {
-	
+contract DaoMakeDecision is Storage, Events {
+	address[] public organizationMembers;
+
+    ConditionalTokens public conditionalTokens;
+
+    constructor (address _conditionalTokens) public {
+        conditionalTokens = ConditionalTokens(_conditionalTokens);
+    }
+
+    /***
+     * @notice - Add organization members for joining oppotunities of making decision in DAO
+     **/
+    function addMemberToOrganization(address member, string memory memberName) public returns (bool) {
+        organizationMembers.push(member);
+        memberNames[member] = memberName;
+    
+        emit AddMemberToOrganization(member, memberName);
+    }
+    
 }
