@@ -11,6 +11,11 @@ ganache-cli -d
 npm run migrate:dev
 ```
 
+- 3.Test
+```
+npm run test:dev
+```
+
 <br>
 
 ### Resources
