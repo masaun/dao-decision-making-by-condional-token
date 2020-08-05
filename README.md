@@ -1,4 +1,4 @@
-## my-condional-token-contract
+## DAO decision making by condional token
 ### Execution Process
 
 - 1.Start ganache-cli
