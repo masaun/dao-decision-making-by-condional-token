@@ -31,6 +31,10 @@ contract DaoMakeDecision is Storage, Events {
     function _prepareCondition(address oracle, bytes32 questionId, uint outcomeSlotCount) public returns (bool) {
         conditionalTokens.prepareCondition(oracle, questionId, outcomeSlotCount);
     }
+
+    function _reportPayouts(bytes32 questionId, uint[] memory payouts) public returns (bool) {
+        conditionalTokens.reportPayouts(questionId, payouts);
+    }
     
     
 }
