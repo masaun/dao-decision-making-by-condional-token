@@ -28,6 +28,8 @@ contract DaoMakeDecision is Storage, Events {
         emit AddMemberToOrganization(member, memberName);
     }
 
+    
+
     function _prepareCondition(address oracle, bytes32 questionId, uint outcomeSlotCount) public returns (bool) {
         conditionalTokens.prepareCondition(oracle, questionId, outcomeSlotCount);
     }
