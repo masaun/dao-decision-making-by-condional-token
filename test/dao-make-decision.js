@@ -35,12 +35,16 @@ contract('DaoMakeDecision', accounts => {
     })
 
     it('execute _prepareCondition()', async () => {
+        const member = accounts[1]
+        const memberName = "Test Member"
+        const members = await daoMakeDecision.addMemberToOrganization(member, memberName)
+
         const oracle = web3.utils.randomHex(20); 
         const questionId = marketConfig[0].questionId;
         //const questionId = web3.utils.randomHex(32);
         const outcomeSlotCount = web3.utils.toBN(256);
 
-        const condition = await daoMakeDecision._prepareCondition(oracle, questionId, outcomeSlotCount)
+        const condition = await daoMakeDecision._prepareCondition(member, memberName, oracle, questionId, outcomeSlotCount)
     })
 
 })
