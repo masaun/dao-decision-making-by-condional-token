@@ -43,11 +43,28 @@ contract DaoMakeDecision is Storage, Events {
         conditionalTokens.prepareCondition(oracle, questionId, outcomeSlotCount);
     }
 
-    function _splitPosition() public returns (bool) {}
+    function _splitPosition(
+        IERC20 collateralToken,
+        bytes32 parentCollectionId,
+        bytes32 conditionId,
+        uint[] calldata partition,
+        uint amount
+    ) public returns (bool) {}
     
-    function _mergePositions() public returns (bool) {}
+    function _mergePositions(
+        IERC20 collateralToken,
+        bytes32 parentCollectionId,
+        bytes32 conditionId,
+        uint[] calldata partition,
+        uint amount
+    ) public returns (bool) {}
 
-    function _redeemPositions() public returns (bool) {}
+    function _redeemPositions(
+        IERC20 collateralToken, 
+        bytes32 parentCollectionId, 
+        bytes32 conditionId, 
+        uint[] calldata indexSets
+    ) public returns (bool) {}
 
     function _reportPayouts(address member, string memory memberName, bytes32 questionId, uint[] memory payouts) public returns (bool) {
         conditionalTokens.reportPayouts(questionId, payouts);
