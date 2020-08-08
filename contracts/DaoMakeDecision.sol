@@ -24,17 +24,26 @@ contract DaoMakeDecision is Storage, Events {
     function addMemberToOrganization(address member, string memory memberName) public returns (bool) {
         organizationMembers.push(member);
         memberNames[member] = memberName;
+        memberAddresses[memberName] = member;
     
         emit AddMemberToOrganization(member, memberName);
     }
 
+    modifier onlyMember(address member, string memory memberName) { 
+        require (memberAddresses[memberName] == member, "Has not been added as a organization's member yet"); 
+        _; 
+    }
     
 
-    function _prepareCondition(address oracle, bytes32 questionId, uint outcomeSlotCount) public returns (bool) {
+    /***
+     * @notice - Organization's member create a condition
+     *         - There are created test conditions in ./markets.config.js
+     **/
+    function _prepareCondition(address member, string memory memberName, address oracle, bytes32 questionId, uint outcomeSlotCount) public onlyMember(member, memberName) returns (bool) {
         conditionalTokens.prepareCondition(oracle, questionId, outcomeSlotCount);
     }
 
-    function _reportPayouts(bytes32 questionId, uint[] memory payouts) public returns (bool) {
+    function _reportPayouts(address member, string memory memberName, bytes32 questionId, uint[] memory payouts) public onlyMember(member, memberName) returns (bool) {
         conditionalTokens.reportPayouts(questionId, payouts);
     }
     
