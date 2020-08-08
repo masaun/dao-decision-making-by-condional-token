@@ -50,7 +50,7 @@ contract DaoMakeDecision is Storage, Events {
         uint[] memory partition,
         uint amount
     ) public returns (bool) {
-        conditionalTokens.splitPosition();
+        conditionalTokens.splitPosition(collateralToken, parentCollectionId, conditionId, partition, amount);
     }
     
     function _mergePositions(
@@ -60,7 +60,7 @@ contract DaoMakeDecision is Storage, Events {
         uint[] memory partition,
         uint amount
     ) public returns (bool) {
-        conditionalTokens.mergePositions();
+        conditionalTokens.mergePositions(collateralToken, parentCollectionId, conditionId, partition, amount);
     }
 
     function _redeemPositions(
@@ -69,7 +69,7 @@ contract DaoMakeDecision is Storage, Events {
         bytes32 conditionId, 
         uint[] memory indexSets
     ) public returns (bool) {
-        conditionalTokens.redeemPositions();
+        conditionalTokens.redeemPositions(collateralToken, parentCollectionId, conditionId, indexSets);
     }
 
     function _reportPayouts(address member, string memory memberName, bytes32 questionId, uint[] memory payouts) public returns (bool) {
