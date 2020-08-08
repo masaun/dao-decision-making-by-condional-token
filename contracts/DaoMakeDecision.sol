@@ -47,24 +47,30 @@ contract DaoMakeDecision is Storage, Events {
         IERC20 collateralToken,
         bytes32 parentCollectionId,
         bytes32 conditionId,
-        uint[] calldata partition,
+        uint[] memory partition,
         uint amount
-    ) public returns (bool) {}
+    ) public returns (bool) {
+        conditionalTokens.splitPosition();
+    }
     
     function _mergePositions(
         IERC20 collateralToken,
         bytes32 parentCollectionId,
         bytes32 conditionId,
-        uint[] calldata partition,
+        uint[] memory partition,
         uint amount
-    ) public returns (bool) {}
+    ) public returns (bool) {
+        conditionalTokens.mergePositions();
+    }
 
     function _redeemPositions(
         IERC20 collateralToken, 
         bytes32 parentCollectionId, 
         bytes32 conditionId, 
-        uint[] calldata indexSets
-    ) public returns (bool) {}
+        uint[] memory indexSets
+    ) public returns (bool) {
+        conditionalTokens.redeemPositions();
+    }
 
     function _reportPayouts(address member, string memory memberName, bytes32 questionId, uint[] memory payouts) public returns (bool) {
         conditionalTokens.reportPayouts(questionId, payouts);
