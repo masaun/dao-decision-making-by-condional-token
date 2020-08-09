@@ -9,24 +9,32 @@ import "./Storage/DaoMakeDecision/Events.sol";
 import "../node_modules/@gnosis.pm/conditional-tokens-contracts/contracts/ConditionalTokens.sol";
 
 
-contract DaoMakeDecision is Storage, Events {
+/***
+ * @notice - This contract provide the member benefits
+ *         - i.e). Provide the insurance for members by using conditional token (ERC1155)
+ **/
+contract DaoMemberBenefits is Storage, Events {
     ConditionalTokens public conditionalTokens;
 
     constructor (address _conditionalTokens) public {
         conditionalTokens = ConditionalTokens(_conditionalTokens);
     }
 
+
+    /***
+     * @notice - Provide the insurance for members by using conditional token (ERC1155)
+     **/
+    function insuranceForMembers() returns(bool res) internal {
+        
+    }
+    
+
+
+
+
     /***
      * @notice - Add organization members for joining oppotunities of making decision in DAO
      **/
-    function addMemberToOrganization(address member, string memory memberName) public returns (bool) {
-        organizationMembers.push(member);
-        memberNames[member] = memberName;
-        memberAddresses[memberName] = member;
-    
-        emit AddMemberToOrganization(member, memberName);
-    }
-
     modifier onlyMember(address member, string memory memberName) { 
         require (memberAddresses[memberName] == member, "Has not been added as a organization's member yet"); 
         _; 
