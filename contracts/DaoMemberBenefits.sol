@@ -11,7 +11,7 @@ import "../node_modules/@gnosis.pm/conditional-tokens-contracts/contracts/Condit
 
 /***
  * @notice - This contract provide the member benefits
- *         - i.e). Provide the insurance for members by using conditional token (ERC1155)
+ *         - i.e). Provide the insurance for organization members by using conditional token (ERC1155)
  **/
 contract DaoMemberBenefits is Storage, Events {
     ConditionalTokens public conditionalTokens;
@@ -22,10 +22,14 @@ contract DaoMemberBenefits is Storage, Events {
 
 
     /***
-     * @notice - Provide the insurance for members by using conditional token (ERC1155)
+     * @notice - Provide the insurance for organization members by using conditional token (ERC1155)
+     *         - Utilize conditional token (ERC1155) into conditional branch of insurance 
      **/
-    function insuranceForMembers() returns(bool res) internal {
+    function insuranceForMembers() public returns (bool) {
         
+        for (uint i=0; i < organizationMembers.length; i++) {
+
+        }        
     }
     
 
