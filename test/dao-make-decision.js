@@ -42,7 +42,7 @@ contract('DaoMakeDecision', accounts => {
         const oracle = web3.utils.randomHex(20); 
         const questionId = marketConfig[0].questionId;
         //const questionId = web3.utils.randomHex(32);
-        const outcomeSlotCount = web3.utils.toBN(256);
+        const outcomeSlotCount = marketConfig[0].outcomes[0].short;
 
         const condition = await daoMakeDecision._prepareCondition(member, memberName, oracle, questionId, outcomeSlotCount)
     })
